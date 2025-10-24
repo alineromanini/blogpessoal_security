@@ -3,7 +3,8 @@ package com.generation.blogpessoal.model;
 import java.util.List;
  
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
- 
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
 
 import jakarta.persistence.Entity;
@@ -47,6 +48,8 @@ public class Usuario {
 	@Email(message = "O Atributo Usuário deve ser um email válido!")
 
 	private String usuario;
+	
+	@Schema(example = "email@email.com.br") //precisa ser um email nesse formato
  
 	@NotBlank(message = "O Atributo Senha é Obrigatório!")
 
