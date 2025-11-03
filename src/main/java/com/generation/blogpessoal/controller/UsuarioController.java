@@ -45,7 +45,7 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> post(@Valid @RequestBody Usuario usuario){
 		return usuarioService.cadastrarUsuario(usuario)
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
-				.orElse(ResponseEntity.badRequest().build());
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
 	@PutMapping("/atualizar")
@@ -54,7 +54,7 @@ public class UsuarioController {
 				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
 				.orElse(ResponseEntity.notFound().build());
 	}
-	//autenticar
+	
 	@PostMapping("/logar")
 	public ResponseEntity<UsuarioLogin> autenticar(@Valid @RequestBody Optional<UsuarioLogin> usuarioLogin){
 		return usuarioService.autenticarUsuario(usuarioLogin)
